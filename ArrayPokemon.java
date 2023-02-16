@@ -14,6 +14,9 @@ public class ArrayPokemon {
 	public void setPokes(ArrayList<Pokemon> pokes) {
 		this.pokes = pokes;
 	}
+	public int sizePokes() {
+		return this.pokes.size();
+	}
 	public void aniadirPokemon(Pokemon p) {
 		this.pokes.add(p);
 	}

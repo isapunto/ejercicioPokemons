@@ -1,11 +1,7 @@
 //package ED1302;
 
 public class mainPokemon {
-//	Cree un programa que te deje consultar la informaci�n de un Pokemon. La
-//	informaci�n de un Pokemon consistir� en la siguiente: Nombre, n�mero en la pok�dex, tipo
-//	del pok�mon y descripci�n del pok�mon. El programa debe permitir consultar la
-//	informaci�n de 5 pokemongos a vuestra elecci�n(tanto la informaci�n completa
-//	como una en espec�fico). Utilice �nicamente ArrayList unidimensional.
+//	Ejercicio 1 y 2.
 	public static void main(String[] args) {
 		Pokemon bulbasaur = new Pokemon("Bulbasaur",1,"Es un Bulbasaur","Planta");
 		Pokemon ivysaur = new Pokemon("Ivysaur",2,"Es un Ivysaur","Planta y Veneno");

@@ -12,6 +12,8 @@ public class mainFinal {
 		Ruta rutaElegida;
 		int eleccion;
 		boolean salir = false;
+		Pokemon pokeSalvaje, pokeHuido;
+		int huirOCapt;
 
 		//Creamos los pokemons
 		Pokemon bulbasaur = new Pokemon("Bulbasaur",1,"Es un Bulbasaur","Planta");
@@ -62,15 +64,50 @@ public class mainFinal {
 
 		while (!salir){
 			System.out.println(	"Elige:\n" +
+													"0. Cambiar de ruta \n" +
 													"1. Consultar Pokedex \n" +
 													"2. Capturar Pokemon \n" +
 													"3. Salir \n" +
 													"(Presiona 1, 2 o 3)");
 			eleccion = Integer.parseInt(sc.nextLine());
-		  if(eleccion==1){
+			if(eleccion==0){
+				System.out.println(	"Elige una ruta:\n" +
+														"1. Ruta Inicial \n" +
+														"2. Ruta Fuego \n" +
+														"3. Ruta Planta \n" +
+														"(Presiona 1, 2 o 3)");
+		    numeroRuta = Integer.parseInt(sc.nextLine());
+				rutaElegida = arrayDeRutas.get(numeroRuta - 1);
+				System.out.println("La ruta elegida es: " + rutaElegida);
+			}else if(eleccion==1){
 				System.out.println(pokedex);
 			}else if (eleccion==2) {
-				System.out.println("Pokemon salvaje aparecio!");
+				System.out.println("Pokemon salvaje aparecio! Es un: ");
+				// Guardamos en numAleatorio el resultado de generar un número aleatorio
+				// [Math.random] entre dos valores y transformarlo a int [(int)Math.round]
+				// El número mayor tiene que ser igual al número de Pokemons que hay en
+				// la ruta. La ruta contiene un ArrayPokemon [lo conseguimos con getPokes],
+				// cuyo tamaño es el del ArrayList que contiene.
+				// Para saber el tamaño de ese primer ArrayList, usamos el método
+				// [sizePokes] de la clase ArrayPokemon.
+				int numAleatorio = (int)Math.round(Math.random()*(rutaElegida.getPokes().sizePokes()-1)+0);
+				pokeSalvaje = rutaElegida.getPokes().consultarPokemon(numAleatorio);
+				System.out.println(pokeSalvaje);
+				System.out.println(	"Elige una opcion:\n" +
+														"1. Huir \n" +
+														"2. Capturar \n" +
+														"(Presiona 1 o 2)");
+		    huirOCapt = Integer.parseInt(sc.nextLine());
+				if(huirOCapt==1){
+					System.out.println("Huimos!!!");
+					pokeHuido = new Pokemon(pokeSalvaje.getNombre(), pokeSalvaje.getId(), "", pokeSalvaje.getTipo());
+					pokedex.aniadirhPokemon(pokeHuido);
+				}else if (huirOCapt==2) {
+					System.out.println("Capturado!!!");
+					pokedex.aniadirhPokemon(pokeSalvaje);
+				}else{
+					System.out.println("Valor invalido -> presiona 1 o 2:");
+				}
 			}else if (eleccion==3){
 				System.out.println("Adios");
 				salir = true;

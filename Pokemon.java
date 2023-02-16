@@ -5,6 +5,7 @@ public class Pokemon {
 	private int id;
 	private String descripcion;
 	private String tipo;
+
 	public Pokemon(String nombre, int id, String descripcion, String tipo) {
 		this.nombre = nombre;
 		this.id = id;
